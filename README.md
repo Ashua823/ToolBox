@@ -1,73 +1,38 @@
-# React + TypeScript + Vite
+# ToolBox 工具箱
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+一个以开发驱动学习的多功能在线工具集合，采用插件化架构，各工具模块相互独立、互不影响。
 
-Currently, two official plugins are available:
+## 技术栈
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **TypeScript** + **Vite 6**
+- **Tailwind CSS** 原子化样式
+- **Zustand** 轻量状态管理
+- **自定义插件系统** — 新增工具只需实现标准接口
 
-## React Compiler
+## 功能模块
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| 分类 | 工具 | 状态 |
+|------|------|------|
+| 文件工具 | 文件格式转换 | ✅ 已完成 |
+| 媒体工具 | 音频播放器 | 🚧 待开发 |
+| 媒体工具 | 图片编辑器 | 🚧 待开发 |
+| 网络工具 | 视频下载 | 🚧 待开发 |
 
-## Expanding the ESLint configuration
+## 文件格式转换
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+支持三大分类：
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **纯文本/标记语言**：Markdown、HTML、JSON、YAML、CSV、纯文本
+- **二进制/办公文档**：Word (.docx)、PDF
+- **编码/进制转换**：Base64、URL 编码、Hex、十进制/二进制/十六进制互转
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 转换特性
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- 浏览器端完成所有转换，不上传服务器
+- 支持文件上传（docx/pdf）和文本输入
+- 转换结果可复制或下载为文件
+- 按分类组织，界面清晰不拥挤
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 快速开始
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```bash
